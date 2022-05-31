@@ -11,16 +11,14 @@
         <main class="main" style="background-image: url({{asset('img/background.png')}})">
             <section>
                 <header>
-                    <img src="{{ asset('img/logo.png') }}">
+                    <a href="{{ route('home') }}">
+                        <img src="{{ asset('img/logo.png') }}">
+                    </a>
                     <p class="title-header">
                         Discografia
                     </p>
                 </header>
-                <form class="search" method="post" action="{{ route('home') }}">
-                    @csrf
-                    <input class="input-search" type="text" placeholder="Digite uma palavra chave" name="search_value" />
-                    <input class="submit" value="Procurar" type="submit" />
-                </form>
+                @yield('content')
             </section>
         </main>
     </body>
