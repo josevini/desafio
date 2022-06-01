@@ -17,7 +17,7 @@
 
 section {
     width: calc(100% - 300px);
-    height: 620px;
+    height: 600px;
     margin: auto;
     background-color: rgba(255, 255, 255, 0.59);
     overflow-y: scroll;
@@ -75,4 +75,38 @@ p {
 .album-name {
     font-size: 16px;
     margin: 15px 0;
+}
+
+.div-album {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.delete-album {
+    cursor: pointer;
+    color: white;
+    font-size: 12px;
+    border: none;
+    border-radius: 2px;
+    padding: 5px 10px;
+    background-color: #f63e3e;
+}
+
+.table-music {
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 8px 10px;
+}
+
+td:nth-child(3) {
+    text-align: right;
+    width: 100%;
+}
+th:nth-child(3) {
+    text-align: right;
+    width: 100%;
 }
