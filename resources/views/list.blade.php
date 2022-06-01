@@ -8,8 +8,15 @@
     </form>
     @foreach($albums as $album)
         <div class="listing">
-            <h2 class="album-name">Álbum: {{ $album->name }}, 1961</h2>
-            <table>
+            <div class="div-album">
+                <h2 class="album-name">Álbum: {{ $album->name }}, {{ $album->date }}</h2>
+                <form action="{{ route('delete-album', $album->id) }}" method="post">
+                    @csrf
+                    @method('delete')
+                    <input type="submit" value="remover album" class="delete-album" />
+                </form>
+            </div>
+            <table class="table-music">
                 <tr>
                     <th>N°</th>
                     <th>Faixa</th>
