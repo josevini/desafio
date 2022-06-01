@@ -12,5 +12,8 @@
             @endforeach
         </select>
         <input type="submit" value="Cadastrar">
+        <a class="btn" href="{{ route('home') }}">
+            voltar
+        </a>
     </form>
 @endsection
