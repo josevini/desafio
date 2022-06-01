@@ -11,6 +11,16 @@ class AlbumController extends Controller
         return view('new-album');
     }
 
+    public function getListView() {
+        $albums = $this->listAlbums();
+        return view('list', ['albums' => $albums]);
+    }
+
+    public function getManageView() {
+        $albums = $this->listAlbums();
+        return view('manage', ['albums' => $albums]);
+    }
+
     private function getAlbum($column, $value) {
         return Album::query()
             ->firstWhere($column, $value);
@@ -31,11 +41,10 @@ class AlbumController extends Controller
     }
 
     public function listAlbums() {
-        $albums = Album::all();
-        return view('list', ['albums' => $albums]);
+        return Album::all();
     }
 
-    public function listAlbumsWhere(Request $request) {
+    public function getAlbumsWhere(Request $request) {
         $value = $request->search_value;
         if (empty($value)) {
             return redirect()->route('home');
