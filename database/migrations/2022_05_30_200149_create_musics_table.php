@@ -15,9 +15,10 @@ return new class extends Migration
     {
         Schema::create('musics', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 20)->unique();
-            $table->unsignedBigInteger('album_id');
-            $table->foreign('album_id')->references('id')->on('albums');
+            $table->string('name', 30)->unique();
+            $table->foreignId('album_id')
+            ->constrained('albums')
+            ->onDelete('CASCADE');
             $table->timestamps();
         });
     }
