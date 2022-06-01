@@ -25,7 +25,7 @@
                     <th>Faixa</th>
                     <th>Duração</th>
                 </tr>
-                @foreach(\App\Models\Music::query()->where('album_id', '=', $album->id)->get() as $music)
+                @foreach(\App\Models\Music::query()->where('album_id', $album->id)->get() as $music)
                     <tr>
                         <td>{{ $count }}</td>
                         <td>{{ $music->name }}</td>
