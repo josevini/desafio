@@ -17,16 +17,24 @@
                 </form>
             </div>
             <table class="table-music">
+                @php
+                    $count = 1;
+                @endphp
                 <tr>
                     <th>N°</th>
                     <th>Faixa</th>
                     <th>Duração</th>
                 </tr>
-                <tr>
-                    <td>11</td>
-                    <td>Minas Gerais</td>
-                    <td>3:47</td>
-                </tr>
+                @foreach(\App\Models\Music::query()->where('album_id', '=', $album->id)->get() as $music)
+                    <tr>
+                        <td>{{ $count }}</td>
+                        <td>{{ $music->name }}</td>
+                        <td>3:47</td>
+                    </tr>
+                    @php
+                        $count++;
+                    @endphp
+                @endforeach
             </table>
         </div>
     @endforeach
