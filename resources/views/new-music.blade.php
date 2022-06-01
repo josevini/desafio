@@ -1,10 +1,10 @@
 @extends('home')
 
 @section('content')
-    <form method="post" action="{{ route('add-album')  }}">
+    <form method="post" action="{{ route('add-music')  }}">
         @csrf
         Nome da Música: <input type="text" name="name" required />
-        Álbum: <select>
+        Álbum: <select name="album">
             @foreach($albums as $album)
                 <option value={{ $album->id }}>
                     {{ $album->name  }}
