@@ -26,10 +26,10 @@ class ListController extends Controller
     }
 
     public function listWhere(Request $request) {
-        $value = $request->search_value;
-        if (empty($value)) {
+        if (empty($request->search_value)) {
             return redirect()->route('home');
         } else {
+            $value = $request->search_value;
             $allMusics = [];
             $allAlbums = DB::table('albums')
                 ->where('name', 'like', "%$value%")
@@ -44,5 +44,9 @@ class ListController extends Controller
             'albums' => $allAlbums,
             'musics' => $allMusics
         ]);
+    }
+
+    public function test() {
+
     }
 }
