@@ -8,14 +8,14 @@ use Illuminate\Http\Request;
 
 class MusicController extends Controller
 {
-    public function getFormNewMusic() {
-        $albums =  DB::table('albums')->get();
-        return view('new-music', ['albums' => $albums]);
-    }
-
     private function getMusic($column, $value) {
         return Music::query()
             ->firstWhere($column, $value);
+    }
+
+    public function getFormNewMusic() {
+        $albums =  DB::table('albums')->get();
+        return view('form.new-music', ['albums' => $albums]);
     }
 
     public function addMusic(Request $request) {
@@ -34,6 +34,6 @@ class MusicController extends Controller
 
     public function deleteMusic(Music $music) {
         $music->delete();
-        return redirect()->route('home');
+        return redirect()->route('manage');
     }
 }
