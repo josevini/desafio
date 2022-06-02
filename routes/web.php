@@ -13,9 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [\App\Http\Controllers\AlbumController::class, 'listAlbums'])->name('home');
-
-Route::get('/search', [\App\Http\Controllers\AlbumController::class, 'listAlbumsWhere'])->name('search');
+Route::controller(\App\Http\Controllers\ListController::class)->group(function () {
+    Route::get('/', 'listAll')->name('home');
+    Route::get('/list', 'listWhere')->name('list');
+    Route::get('/manage', 'manageAll')->name('manage');
+});
 
 Route::controller(\App\Http\Controllers\AlbumController::class)->group(function() {
     Route::get('/new/album', 'getFormNewAlbum')->name('form-new-album');
@@ -26,4 +28,5 @@ Route::controller(\App\Http\Controllers\AlbumController::class)->group(function(
 Route::controller(\App\Http\Controllers\MusicController::class)->group(function() {
     Route::get('new/music', 'getFormNewMusic')->name('form-new-music');
     Route::post('add/music', 'addMusic')->name('add-music');
+    Route::delete('/delete/music/{music}', 'deleteMusic')->name('delete-music');
 });
