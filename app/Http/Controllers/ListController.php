@@ -9,7 +9,7 @@ class ListController extends Controller
 {
     public function listAll() {
         $albums = DB::table('albums')->get(['id', 'name', 'date']);
-        $musics = DB::table('musics')->get(['id', 'name', 'album_id']);
+        $musics = DB::table('musics')->get(['id', 'name', 'album_id', 'duration']);
         return view('list', [
             'albums' => $albums,
             'musics' => $musics
