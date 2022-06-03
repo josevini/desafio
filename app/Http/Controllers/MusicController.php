@@ -19,7 +19,7 @@ class MusicController extends Controller
     }
 
     public function addMusic(Request $request) {
-        if (empty($request->name) || empty($request->album)) {
+        if (empty($request->name) || empty($request->album) || empty($request->duration)) {
             return redirect()->route('form-new-music');
         } else if (!empty($this->getMusic('name', $request->name))) {
             return redirect()->route('form-new-music');
@@ -27,6 +27,7 @@ class MusicController extends Controller
             $music = new Music();
             $music->name = $request->name;
             $music->album_id = $request->album;
+            $music->duration = $request->duration;
             $music->save();
             return redirect()->route('home');
         }
