@@ -33,7 +33,7 @@
                         <tr>
                             <td>{{ $count }}</td>
                             <td>{{ $music->name }}</td>
-                            <td>3:47</td>
+                            <td>{{ number_format($music->duration / 60, 2, ':') }}</td>
                         </tr>
                         @php
                             $count++;
