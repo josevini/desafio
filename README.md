@@ -15,3 +15,4 @@ DB_DATABASE=desafio
 DB_USERNAME=sail
 DB_PASSWORD=password
 ```
+### Aviso: os dados informados são os únicos que precisam ser trocados no .env.example
